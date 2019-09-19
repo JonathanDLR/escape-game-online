@@ -1,16 +1,23 @@
 package jdlr.escape.combination_game.mode;
 
-import jdlr.escape.combination_game.AI;
-import jdlr.escape.combination_game.User;
+import jdlr.escape.combination_game.conf.ConfFactory;
+import jdlr.escape.combination_game.gamer.AI;
+import jdlr.escape.combination_game.gamer.User;
 
-public class ChallengerMode implements Mode {
+public class ChallengerMode extends Mode {
 	
+	public ChallengerMode(ConfFactory pConfFactory) {
+		super(pConfFactory);
+	}
+
 	/**
 	 * Resolving the proposition
 	 */
 	public String inGame(AI pAi, User pUser) {
+		int numberTry = this.confFactory.getCombinationTry();
 		System.out.println("CHALLENGER MODE");
 		System.out.println("----------------");
+		System.out.println("You have "+numberTry+" try");
 		System.out.println("");
 		pAi.setSolution(pAi.generateNumber());
 		System.out.println(pAi.getSolution());
@@ -21,9 +28,13 @@ public class ChallengerMode implements Mode {
 				System.out.println("YOU WIN!");
 			} else {
 				String verdict = pAi.giveResponseDef(pUser.getResponse());
-				System.out.println(verdict + " Nope! New Try");
+				numberTry = numberTry - 1;
+				System.out.println(verdict + " Nope! "+numberTry+" try remaining");
 			}
-		} while (!pAi.getSolution().equals(pUser.getResponse()));
+			if (numberTry == 0) {
+				System.out.println("You lose");
+			}
+		} while ((!pAi.getSolution().equals(pUser.getResponse())) && (numberTry != 0));
 		
 		return "END";
 	}

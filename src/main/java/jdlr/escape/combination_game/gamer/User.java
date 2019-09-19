@@ -1,8 +1,15 @@
-package jdlr.escape.combination_game;
+package jdlr.escape.combination_game.gamer;
 
 import java.util.Scanner;
 
+import jdlr.escape.combination_game.conf.ConfFactory;
+
 public class User extends Player{
+	public User(ConfFactory pConfFactory) {
+		super(pConfFactory);
+		// TODO Auto-generated constructor stub
+	}
+
 	Scanner sc = new Scanner(System.in);
 	
 	/**
@@ -24,9 +31,9 @@ public class User extends Player{
 		String response;
 		do {
 			response = sc.next();
-			responseIsGood = (response.matches("[\\+\\-\\=]{4}"));
+			responseIsGood = (response.matches("[\\+\\-\\=]{"+this.confFactory.getCombinationNumber()+"}"));
 			if (!responseIsGood) {
-				System.out.println("Veuillez rentrer une réponse valide (4 caractères, uniquement +, - ou =):");
+				System.out.println("Veuillez rentrer une réponse valide ("+this.confFactory.getCombinationNumber()+" caractères, uniquement +, - ou =):");
 			}
 		} while(!responseIsGood);
 		
@@ -42,9 +49,9 @@ public class User extends Player{
 		String number;
 		do {
 			number = sc.next();
-			responseIsGood = (number.matches("\\d{4}"));
+			responseIsGood = (number.matches("\\d{"+this.confFactory.getCombinationNumber()+"}"));
 			if (!responseIsGood) {
-				System.out.println("Veuillez rentrer un nombre valide composé de 4 chiffres:");
+				System.out.println("Veuillez rentrer un nombre valide composé de "+this.confFactory.getCombinationNumber()+" chiffres:");
 			}
 		} while(!responseIsGood);
 		return number;

@@ -1,10 +1,15 @@
 package jdlr.escape.combination_game.mode;
 
-import jdlr.escape.combination_game.AI;
-import jdlr.escape.combination_game.User;
+import jdlr.escape.combination_game.conf.ConfFactory;
+import jdlr.escape.combination_game.gamer.AI;
+import jdlr.escape.combination_game.gamer.User;
 
-public class DefenderMode implements Mode {
+public class DefenderMode extends Mode {
 	
+	public DefenderMode(ConfFactory pConfFactory) {
+		super(pConfFactory);
+	}
+
 	/**
 	 * Resolving the proposition
 	 * @param pAi

@@ -1,8 +1,15 @@
-package jdlr.escape.combination_game;
+package jdlr.escape.combination_game.gamer;
+
+import jdlr.escape.combination_game.conf.ConfFactory;
 
 public class Player {
 	private String solution;
 	private String response;
+	protected ConfFactory confFactory;
+	
+	public Player(ConfFactory pConfFactory) {
+		this.confFactory = pConfFactory;
+	}
 	
 	// GETTERS
 	public String getSolution() {

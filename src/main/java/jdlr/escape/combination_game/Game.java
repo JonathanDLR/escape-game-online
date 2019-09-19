@@ -2,6 +2,9 @@ package jdlr.escape.combination_game;
 
 import java.util.Scanner;
 
+import jdlr.escape.combination_game.conf.ConfFactory;
+import jdlr.escape.combination_game.gamer.AI;
+import jdlr.escape.combination_game.gamer.User;
 import jdlr.escape.combination_game.mode.ChallengerMode;
 import jdlr.escape.combination_game.mode.DefenderMode;
 import jdlr.escape.combination_game.mode.DuelMode;
@@ -13,12 +16,14 @@ import jdlr.escape.combination_game.mode.DuelMode;
  */
 public class Game {
 	Scanner sc = new Scanner(System.in);
+	private ConfFactory confFactory;
 	private int type;
 	private AI ai;
 	private User user;
 	private String end;
 	
-	public Game(AI pAi, User pUser) {
+	public Game(ConfFactory pConfFactory, AI pAi, User pUser) {
+		this.confFactory = pConfFactory;
 		this.ai = pAi;
 		this.user = pUser;
 	}
@@ -87,21 +92,21 @@ public class Game {
 	public void launchMode(int pType) {
 		switch (pType) {
 			case 1:
-				ChallengerMode challengerMode = new ChallengerMode();
+				ChallengerMode challengerMode = new ChallengerMode(confFactory);
 				end = challengerMode.inGame(ai, user);
 				if (end == "END") {
 					this.end(1);
 				}
 				break;
 			case 2:
-				DefenderMode defensorMode = new DefenderMode();
+				DefenderMode defensorMode = new DefenderMode(confFactory);
 				end = defensorMode.inGame(ai, user);
 				if (end == "END") {
 					this.end(2);
 				}
 				break;
 			case 3:
-				DuelMode duelMode = new DuelMode();
+				DuelMode duelMode = new DuelMode(confFactory);
 				end = duelMode.inGame(ai,  user);
 				if (end == "END") {
 					this.end(3);

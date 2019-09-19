@@ -1,14 +1,20 @@
 package jdlr.escape.combination_game.mode;
 
-import jdlr.escape.combination_game.AI;
-import jdlr.escape.combination_game.User;
+import jdlr.escape.combination_game.conf.ConfFactory;
+import jdlr.escape.combination_game.gamer.AI;
+import jdlr.escape.combination_game.gamer.User;
 
 /**
  * Resoluving the game
  * @author jdlr
  *
  */
-public class DuelMode implements Mode {
+public class DuelMode extends Mode {
+	
+	public DuelMode(ConfFactory pConfFactory) {
+		super(pConfFactory);
+	}
+
 	public String inGame(AI pAi, User pUser) {
 		System.out.println("DUEL MODE");
 		System.out.println("----------------");

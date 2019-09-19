@@ -1,15 +1,18 @@
-package jdlr.escape.combination_game;
+package jdlr.escape.combination_game.gamer;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
+import jdlr.escape.combination_game.conf.ConfFactory;
+
 public class AI extends Player {
 	// Array of array of response given by AI
 	public	ArrayList<ArrayList<Integer>> responsesGiven = new ArrayList<ArrayList<Integer>>();
 	
-	public AI() {
-		for (int i = 0; i < 4; i++) {
+	public AI(ConfFactory pConfFactory) {
+		super(pConfFactory);
+		for (int i = 0; i < this.confFactory.getCombinationNumber(); i++) {
 			ArrayList<Integer> responseGiven = new ArrayList<Integer>();
 			responseGiven.add(-1);
 			responseGiven.add(10);
@@ -113,8 +116,9 @@ public class AI extends Player {
 	 * Generate random number
 	 */
 	public String generateNumber() {
+		int combinationNumber = this.confFactory.getCombinationNumber();
 		Random rand = new Random();
-		String number = String.format("%04d", rand.nextInt(10000));
+		String number = String.format("%0"+combinationNumber+"d", rand.nextInt((int) Math.pow(10, combinationNumber)));
 		
 		return number;
 	}
