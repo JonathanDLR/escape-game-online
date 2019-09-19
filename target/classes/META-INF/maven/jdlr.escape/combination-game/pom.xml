@@ -8,7 +8,15 @@
   <packaging>jar</packaging>
 
   <name>combination-game</name>
+  <description>
+  	Escape Game Online: combination game parts
+  </description>
   <url>http://maven.apache.org</url>
+  
+  <organization>
+  	<name>GAMEPLAY STUDIO</name>
+  	<url>http://gameplay-studio.com</url>
+  </organization>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

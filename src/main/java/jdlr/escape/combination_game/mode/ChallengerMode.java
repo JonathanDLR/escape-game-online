@@ -1,4 +1,7 @@
-package jdlr.escape.combination_game;
+package jdlr.escape.combination_game.mode;
+
+import jdlr.escape.combination_game.AI;
+import jdlr.escape.combination_game.User;
 
 public class ChallengerMode implements Mode {
 	

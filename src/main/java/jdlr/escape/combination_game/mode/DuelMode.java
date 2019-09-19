@@ -1,4 +1,8 @@
-package jdlr.escape.combination_game;
+package jdlr.escape.combination_game.mode;
+
+import jdlr.escape.combination_game.AI;
+import jdlr.escape.combination_game.User;
+
 /**
  * Resoluving the game
  * @author jdlr
@@ -49,6 +53,7 @@ public class DuelMode implements Mode {
 			}
 				
 		} while ((!pAi.getResponse().equals(pUser.getSolution())) && (!pAi.getSolution().equals(pUser.getResponse())));
+		
 		return "END";
 	}
 }

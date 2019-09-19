@@ -2,6 +2,10 @@ package jdlr.escape.combination_game;
 
 import java.util.Scanner;
 
+import jdlr.escape.combination_game.mode.ChallengerMode;
+import jdlr.escape.combination_game.mode.DefenderMode;
+import jdlr.escape.combination_game.mode.DuelMode;
+
 /**
  * Properties of the game
  * @author jdlr
