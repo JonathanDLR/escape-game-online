@@ -3,7 +3,7 @@ ESCAPE-GAME-ONLINE BY GAMESTUDIO
 combination program
 
 ///////////////////////////////
-Choose your game parent in src/ressources/configuration.properties
+Set your game params in src/ressources/configuration.properties
 Build the maven project
 Lanch the app as a java application
 
