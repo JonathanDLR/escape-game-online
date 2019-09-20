@@ -6,9 +6,11 @@ public class Player {
 	private String solution;
 	private String response;
 	protected ConfFactory confFactory;
+	protected int combinationNumber;
 	
 	public Player(ConfFactory pConfFactory) {
 		this.confFactory = pConfFactory;
+		this.combinationNumber = this.confFactory.getCombinationNumber();
 	}
 	
 	// GETTERS

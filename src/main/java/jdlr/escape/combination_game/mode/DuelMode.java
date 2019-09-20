@@ -22,8 +22,10 @@ public class DuelMode extends Mode {
 		
 		String userResponse = "";
 		pAi.setSolution(pAi.generateNumber());
-		System.out.println(pAi.getSolution());
-		
+		if (Boolean.valueOf(dev)) {
+			System.out.println(pAi.getSolution());
+		}
+	
 		System.out.println("Rentrez votre combinaison: ");
 		pUser.setSolution(pUser.setNumber());
 		
@@ -39,8 +41,10 @@ public class DuelMode extends Mode {
 				userResponse = pUser.giveResponseDef();
 				
 				System.out.println("YOUR TURN");
-				System.out.println(pAi.getSolution());
-				
+				if (Boolean.valueOf(dev)) {
+					System.out.println(pAi.getSolution());
+				}
+						
 				
 				System.out.println("Faites votre proposition: ");
 				pUser.setResponse(pUser.setNumber());

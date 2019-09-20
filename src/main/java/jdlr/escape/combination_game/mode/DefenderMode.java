@@ -18,23 +18,32 @@ public class DefenderMode extends Mode {
 	public String inGame(AI pAi, User pUser) {
 		System.out.println("DEFENDER MODE");
 		System.out.println("----------------");
+		System.out.println(numberTry+" rounds left");
 		System.out.println("");
 		System.out.println("Rentrez votre combinaison: ");
 		pUser.setSolution(pUser.setNumber());
 		pAi.setResponse(pAi.generateNumber());
 		System.out.println(pAi.getResponse());
-		do {
+		do {	
+			numberTry = numberTry - 1;
 			System.out.println("Votre réponse: ");
-			String response = pUser.giveResponseDef();
+			String response = pUser.giveResponseDef();			
 			
 			pAi.setResponse(pAi.giveResponseAtak(response, pUser.getSolution()));
 			
-			System.out.println(pAi.getResponse());
-			
 			if (pAi.getResponse().equals(pUser.getSolution())) {
+				System.out.println(pAi.getResponse());
 				System.out.println("You Lose!");
+			} else if (numberTry != 0) {
+				System.out.println(numberTry+" rounds left");
+				System.out.println(pAi.getResponse());
+			} else {
+				System.out.println(pAi.getResponse());
+				System.out.println("You Win!");
 			}
-		} while(!pAi.getResponse().equals(pUser.getSolution()));
+			
+			
+		} while((!pAi.getResponse().equals(pUser.getSolution())) && (numberTry != 0));
 		
 		return "END";
 	}

@@ -14,13 +14,14 @@ public class ChallengerMode extends Mode {
 	 * Resolving the proposition
 	 */
 	public String inGame(AI pAi, User pUser) {
-		int numberTry = this.confFactory.getCombinationTry();
 		System.out.println("CHALLENGER MODE");
 		System.out.println("----------------");
 		System.out.println("You have "+numberTry+" try");
 		System.out.println("");
 		pAi.setSolution(pAi.generateNumber());
-		System.out.println(pAi.getSolution());
+		if (Boolean.valueOf(dev)) {
+			System.out.println(pAi.getSolution());
+		}
 		do {
 			System.out.println("Faites votre proposition: ");
 			pUser.setResponse(pUser.setNumber());

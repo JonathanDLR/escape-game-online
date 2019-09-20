@@ -13,16 +13,6 @@ public class User extends Player{
 	Scanner sc = new Scanner(System.in);
 	
 	/**
-	 * Generate a number
-	 * @return
-	 */
-	public String generateNumber() {
-		String number = "";
-		
-		return number;
-	}
-	
-	/**
 	 * Give response to the app
 	 * @return The response: for each number set + if is higher, - if is lower, = if it's ok
 	 */
@@ -31,9 +21,9 @@ public class User extends Player{
 		String response;
 		do {
 			response = sc.next();
-			responseIsGood = (response.matches("[\\+\\-\\=]{"+this.confFactory.getCombinationNumber()+"}"));
+			responseIsGood = (response.matches("[\\+\\-\\=]{"+combinationNumber+"}"));
 			if (!responseIsGood) {
-				System.out.println("Veuillez rentrer une réponse valide ("+this.confFactory.getCombinationNumber()+" caractères, uniquement +, - ou =):");
+				System.out.println("Veuillez rentrer une réponse valide ("+combinationNumber+" caractères, uniquement +, - ou =):");
 			}
 		} while(!responseIsGood);
 		
@@ -49,9 +39,9 @@ public class User extends Player{
 		String number;
 		do {
 			number = sc.next();
-			responseIsGood = (number.matches("\\d{"+this.confFactory.getCombinationNumber()+"}"));
+			responseIsGood = (number.matches("\\d{"+combinationNumber+"}"));
 			if (!responseIsGood) {
-				System.out.println("Veuillez rentrer un nombre valide composé de "+this.confFactory.getCombinationNumber()+" chiffres:");
+				System.out.println("Veuillez rentrer un nombre valide composé de "+combinationNumber+" chiffres:");
 			}
 		} while(!responseIsGood);
 		return number;

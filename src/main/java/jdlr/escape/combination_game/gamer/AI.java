@@ -9,10 +9,12 @@ import jdlr.escape.combination_game.conf.ConfFactory;
 public class AI extends Player {
 	// Array of array of response given by AI
 	public	ArrayList<ArrayList<Integer>> responsesGiven = new ArrayList<ArrayList<Integer>>();
+	private String dev;
 	
 	public AI(ConfFactory pConfFactory) {
 		super(pConfFactory);
-		for (int i = 0; i < this.confFactory.getCombinationNumber(); i++) {
+		this.dev = confFactory.getDevMode();
+		for (int i = 0; i < combinationNumber; i++) {
 			ArrayList<Integer> responseGiven = new ArrayList<Integer>();
 			responseGiven.add(-1);
 			responseGiven.add(10);
@@ -60,7 +62,10 @@ public class AI extends Player {
 		int number = 0;
 		
 		for (int i = 0; i < partsUserResponse.length; i++) {
-			System.out.println(Integer.toString(i) + this.responsesGiven.get(i));
+			if (Boolean.valueOf(dev)) {
+				System.out.println(Integer.toString(i) + this.responsesGiven.get(i));
+			}
+			
 			// Higher number given by AI
 			Integer maxGiven = this.responsesGiven.get(i).stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
 			
@@ -105,8 +110,10 @@ public class AI extends Player {
 			} else {
 				response = response.concat(partsAiResponse[i]);
 			}
-			System.out.println(Integer.toString(i) + this.responsesGiven.get(i));
-			System.out.println(number);
+			if (Boolean.valueOf(dev)) {
+				System.out.println(Integer.toString(i) + this.responsesGiven.get(i));
+				System.out.println(number);
+			}		
 		}
 		
 		return response;
@@ -116,7 +123,6 @@ public class AI extends Player {
 	 * Generate random number
 	 */
 	public String generateNumber() {
-		int combinationNumber = this.confFactory.getCombinationNumber();
 		Random rand = new Random();
 		String number = String.format("%0"+combinationNumber+"d", rand.nextInt((int) Math.pow(10, combinationNumber)));
 		
