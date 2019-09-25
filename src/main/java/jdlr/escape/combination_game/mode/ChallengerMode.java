@@ -1,11 +1,14 @@
 package jdlr.escape.combination_game.mode;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
 import jdlr.escape.combination_game.conf.ConfFactory;
 import jdlr.escape.combination_game.gamer.AI;
 import jdlr.escape.combination_game.gamer.User;
+import jdlr.escape.combination_game.log.Logger4j;
 
 public class ChallengerMode extends Mode {
-	
 	public ChallengerMode(ConfFactory pConfFactory) {
 		super(pConfFactory);
 	}
@@ -30,6 +33,9 @@ public class ChallengerMode extends Mode {
 			} else {
 				String verdict = pAi.giveResponseDef(pUser.getResponse());
 				numberTry = numberTry - 1;
+				logger.setLevel(Level.INFO);
+				logger.info("CHALLENGERMODE - user response: " + pUser.getResponse());
+				
 				System.out.println(verdict + " Nope! "+numberTry+" try remaining");
 			}
 			if (numberTry == 0) {

@@ -1,5 +1,7 @@
 package jdlr.escape.combination_game.mode;
 
+import org.apache.log4j.Level;
+
 import jdlr.escape.combination_game.conf.ConfFactory;
 import jdlr.escape.combination_game.gamer.AI;
 import jdlr.escape.combination_game.gamer.User;
@@ -35,6 +37,8 @@ public class DefenderMode extends Mode {
 				System.out.println(pAi.getResponse());
 				System.out.println("You Lose!");
 			} else if (numberTry != 0) {
+				logger.setLevel(Level.INFO);
+				logger.info("DEFENDERMODE - ai response: " + pAi.getResponse());
 				System.out.println(numberTry+" rounds left");
 				System.out.println(pAi.getResponse());
 			} else {

@@ -2,6 +2,8 @@ package jdlr.escape.combination_game.gamer;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Level;
+
 import jdlr.escape.combination_game.conf.ConfFactory;
 
 public class User extends Player{
@@ -23,6 +25,8 @@ public class User extends Player{
 			response = sc.next();
 			responseIsGood = (response.matches("[\\+\\-\\=]{"+combinationNumber+"}"));
 			if (!responseIsGood) {
+				logger.setLevel(Level.DEBUG);
+				logger.debug("DEFENDERMODE - wrong user response: " + response);
 				System.out.println("Veuillez rentrer une réponse valide ("+combinationNumber+" caractères, uniquement +, - ou =):");
 			}
 		} while(!responseIsGood);
@@ -41,6 +45,8 @@ public class User extends Player{
 			number = sc.next();
 			responseIsGood = (number.matches("\\d{"+combinationNumber+"}"));
 			if (!responseIsGood) {
+				logger.setLevel(Level.DEBUG);
+				logger.debug("DEFENDERMODE - wrong user combination: " + number);
 				System.out.println("Veuillez rentrer un nombre valide composé de "+combinationNumber+" chiffres:");
 			}
 		} while(!responseIsGood);
