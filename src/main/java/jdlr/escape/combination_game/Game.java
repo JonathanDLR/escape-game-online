@@ -2,9 +2,13 @@ package jdlr.escape.combination_game;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
 import jdlr.escape.combination_game.conf.ConfFactory;
 import jdlr.escape.combination_game.gamer.AI;
 import jdlr.escape.combination_game.gamer.User;
+import jdlr.escape.combination_game.log.Logger4j;
 import jdlr.escape.combination_game.mode.ChallengerMode;
 import jdlr.escape.combination_game.mode.DefenderMode;
 import jdlr.escape.combination_game.mode.DuelMode;
@@ -21,6 +25,8 @@ public class Game {
 	private AI ai;
 	private User user;
 	private String end;
+	private static Logger logger = Logger.getLogger(Logger4j.class);
+	
 	
 	public Game(ConfFactory pConfFactory, AI pAi, User pUser) {
 		this.confFactory = pConfFactory;
@@ -52,6 +58,8 @@ public class Game {
             responseIsGood = (response == 1 || response == 2 || response == 3);
 
             if (!responseIsGood) {
+            	logger.setLevel(Level.DEBUG);
+				logger.debug("ENDCHOICE - wrong user response: " + response);
                 System.out.println("Veuillez renseigner un chiffre parmi les choix proposés");
             } else if (response == 1) {
             	this.launchMode(pType);
@@ -79,6 +87,8 @@ public class Game {
             responseIsGood = (type == 1 || type == 2 || type == 3);
 
             if (!responseIsGood) {
+            	logger.setLevel(Level.DEBUG);
+				logger.debug("MODECHOICE - wrong user response: " + type);
                 System.out.println("Veuillez renseigner un chiffre parmi les choix proposés");
             }
         } while (!responseIsGood);

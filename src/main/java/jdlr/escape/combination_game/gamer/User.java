@@ -46,7 +46,7 @@ public class User extends Player{
 			responseIsGood = (number.matches("\\d{"+combinationNumber+"}"));
 			if (!responseIsGood) {
 				logger.setLevel(Level.DEBUG);
-				logger.debug("DEFENDERMODE - wrong user combination: " + number);
+				logger.debug("wrong user combination: " + number);
 				System.out.println("Veuillez rentrer un nombre valide composé de "+combinationNumber+" chiffres:");
 			}
 		} while(!responseIsGood);
