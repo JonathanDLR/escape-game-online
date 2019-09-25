@@ -1,0 +1,5 @@
+2019-09-25 10:55:30 DEBUG Logger4j:49 - DEFENDERMODE - wrong user combination: 45648
+2019-09-25 10:56:34 DEBUG Logger4j:29 - DEFENDERMODE - wrong user response: +-+-dffd
+2019-09-25 10:56:57 INFO  Logger4j:41 - DEFENDERMODE - ai response: 1419
+2019-09-25 10:57:02 INFO  Logger4j:41 - DEFENDERMODE - ai response: 4431
+2019-09-25 10:57:05 INFO  Logger4j:41 - DEFENDERMODE - ai response: 4445

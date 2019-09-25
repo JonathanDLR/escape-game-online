@@ -1,10 +1,11 @@
+jdlr/escape/combination_game/log/Logger4j.class
+jdlr/escape/combination_game/gamer/Player.class
+jdlr/escape/combination_game/gamer/AI.class
+jdlr/escape/combination_game/mode/DefenderMode.class
+jdlr/escape/combination_game/mode/Mode.class
 jdlr/escape/combination_game/mode/DuelMode.class
 jdlr/escape/combination_game/mode/ChallengerMode.class
 jdlr/escape/combination_game/gamer/User.class
-jdlr/escape/combination_game/gamer/Player.class
 jdlr/escape/combination_game/conf/ConfFactory.class
-jdlr/escape/combination_game/gamer/AI.class
 jdlr/escape/combination_game/App.class
 jdlr/escape/combination_game/Game.class
-jdlr/escape/combination_game/mode/DefenderMode.class
-jdlr/escape/combination_game/mode/Mode.class
