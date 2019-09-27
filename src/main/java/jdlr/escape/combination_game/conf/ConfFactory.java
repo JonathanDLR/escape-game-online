@@ -1,7 +1,11 @@
 package jdlr.escape.combination_game.conf;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 /**
  * Factory giving access to the configuration app
@@ -13,6 +17,7 @@ public class ConfFactory {
 	private int combinationNumber;
 	private int combinationTry;
 	private String devMode;
+	protected static Logger logger = Logger.getLogger(ConfFactory.class);
 	
 	public ConfFactory() {
 		try {
@@ -22,8 +27,10 @@ public class ConfFactory {
 			combinationNumber = Integer.parseInt(configuration.getProperty("combination.number"));
 			combinationTry = Integer.parseInt(configuration.getProperty("combination.try"));
 			devMode = configuration.getProperty("combination.dev");
-		} catch (Exception e) {
-            e.printStackTrace();
+		} catch (IOException e) {
+            logger.setLevel(Level.ERROR);
+			logger.error("ERROR FILE NOT FOUND");
+			System.out.println("ERROR FILE NOT FOUND");
         } 
 	}
 	
