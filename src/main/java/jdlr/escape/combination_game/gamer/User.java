@@ -18,8 +18,9 @@ public class User extends Player{
 	 * Give response to the app
 	 * @return The response: for each number set + if is higher, - if is lower, = if it's ok
 	 */
-	public String giveResponseDef() {	
+	public String giveResponseDef(String pAiResponse) {	
 		Boolean responseIsGood;
+		Boolean responseIsGood2;
 		String response;
 		do {
 			response = sc.next();
@@ -28,6 +29,21 @@ public class User extends Player{
 				logger.setLevel(Level.DEBUG);
 				logger.debug("DEFENDERMODE - wrong user response: " + response);
 				System.out.println("Veuillez rentrer une réponse valide ("+combinationNumber+" caractères, uniquement +, - ou =):");
+			}
+			
+			// Check if user doesn't invite ia to propose > 10 or < 0 number
+			String[] partsAiResponse = pAiResponse.split("");
+			String[] partsResponse = response.split("");		
+			for (int i = 0; i < partsResponse.length; i++) {
+				if (partsAiResponse[i].equals("0") && partsResponse[i].equals("-")) {
+					responseIsGood = false;
+					logger.debug("DEFENDERMODE - wrong user response: " + response);
+					System.out.println("Un nombre ne peut être inférieur à 0. Entrez une réponse valide:");
+				} else if (partsAiResponse[i].equals("9") && partsResponse[i].equals("+")) {
+					responseIsGood = false;
+					logger.debug("DEFENDERMODE - wrong user response: " + response);
+					System.out.println("Un nombre ne peut être supérieur à 10. Entrez une réponse valide:");
+				} 
 			}
 		} while(!responseIsGood);
 		

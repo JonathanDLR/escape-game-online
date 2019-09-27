@@ -80,31 +80,27 @@ public class AI extends Player {
 				
 				if ((Integer.parseInt(partsAiResponse[i]) != -1) &&	(Integer.parseInt(partsAiResponse[i]) != 10)) {
 					if (partsUserResponse[i].equals("+")) {
-						 {
-							if (Integer.parseInt(partsAiResponse[i]) > Integer.parseInt(partsSolution[i])) {
-								this.responsesGiven.get(i).remove(maxGiven);
-								maxGiven = Integer.parseInt(partsAiResponse[i]);
-							} else {
-								this.responsesGiven.get(i).remove(minGiven);
-								minGiven = this.responsesGiven.get(i).stream().mapToInt(v -> v).min().orElseThrow(NoSuchElementException::new); 
-							}
-						}
+						this.responsesGiven.get(i).remove(minGiven);
+						minGiven = this.responsesGiven.get(i).stream().mapToInt(v -> v).min().orElseThrow(NoSuchElementException::new); 							
 							
 					} else if (partsUserResponse[i].equals("-")) {
-						if (Integer.parseInt(partsAiResponse[i]) < Integer.parseInt(partsSolution[i])) {
-							this.responsesGiven.get(i).remove(minGiven);
-							minGiven = Integer.parseInt(partsAiResponse[i]);
-						} else {
-							this.responsesGiven.get(i).remove(maxGiven);
-							maxGiven = this.responsesGiven.get(i).stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
-						}
+						this.responsesGiven.get(i).remove(maxGiven);
+						maxGiven = this.responsesGiven.get(i).stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
 					}
 				}
 				
 				// GENERATE RANDOM DIGIT WITH ARRAY INFO. CONCAT EACH DIGIT IN NUMBER RESPONSE
-				do {
-					number = (minGiven + 1)  + rand.nextInt(maxGiven - minGiven);
-				} while (this.responsesGiven.get(i).contains(number));
+				number = (minGiven + 1)  + rand.nextInt(maxGiven - minGiven);
+				System.out.println(number);
+				if (this.responsesGiven.get(i).contains(number)) {
+					System.out.println("Error detected in your response. This number is reinitialized.");
+					this.responsesGiven.get(i).remove(minGiven);
+					this.responsesGiven.get(i).remove(maxGiven);
+					this.responsesGiven.get(i).add(-1);
+					this.responsesGiven.get(i).add(10);
+					number = rand.nextInt(10);
+				}
+				
 				
 				response = response.concat(Integer.toString(number));
 			} else {

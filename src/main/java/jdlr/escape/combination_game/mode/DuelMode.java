@@ -38,7 +38,7 @@ public class DuelMode extends Mode {
 				System.out.println("You Lose!");
 			} else {
 				System.out.println("Votre réponse: ");
-				userResponse = pUser.giveResponseDef();
+				userResponse = pUser.giveResponseDef(pAi.getResponse());
 				
 				System.out.println("YOUR TURN");
 				if (Boolean.valueOf(dev)) {

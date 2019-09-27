@@ -32,7 +32,7 @@ public class DefenderMode extends Mode {
 			do {	
 				numberTry = numberTry - 1;
 				System.out.println("Votre réponse: ");
-				String response = pUser.giveResponseDef();			
+				String response = pUser.giveResponseDef(pAi.getResponse());			
 				
 				pAi.setResponse(pAi.giveResponseAtak(response, pUser.getSolution()));
 				
