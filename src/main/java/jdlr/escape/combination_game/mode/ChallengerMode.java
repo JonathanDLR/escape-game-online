@@ -1,12 +1,10 @@
 package jdlr.escape.combination_game.mode;
 
 import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 
 import jdlr.escape.combination_game.conf.ConfFactory;
 import jdlr.escape.combination_game.gamer.AI;
 import jdlr.escape.combination_game.gamer.User;
-import jdlr.escape.combination_game.log.Logger4j;
 
 public class ChallengerMode extends Mode {
 	public ChallengerMode(ConfFactory pConfFactory) {

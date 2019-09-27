@@ -3,14 +3,13 @@ package jdlr.escape.combination_game.gamer;
 import org.apache.log4j.Logger;
 
 import jdlr.escape.combination_game.conf.ConfFactory;
-import jdlr.escape.combination_game.log.Logger4j;
 
 public class Player {
 	private String solution;
 	private String response;
 	protected ConfFactory confFactory;
 	protected int combinationNumber;
-	protected static Logger logger = Logger.getLogger(Logger4j.class);
+	protected static Logger logger = Logger.getLogger(Player.class);
 	
 	public Player(ConfFactory pConfFactory) {
 		this.confFactory = pConfFactory;

@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import jdlr.escape.combination_game.conf.ConfFactory;
 import jdlr.escape.combination_game.gamer.AI;
 import jdlr.escape.combination_game.gamer.User;
-import jdlr.escape.combination_game.log.Logger4j;
 import jdlr.escape.combination_game.mode.ChallengerMode;
 import jdlr.escape.combination_game.mode.DefenderMode;
 import jdlr.escape.combination_game.mode.DuelMode;
@@ -25,7 +24,7 @@ public class Game {
 	private AI ai;
 	private User user;
 	private String end;
-	private static Logger logger = Logger.getLogger(Logger4j.class);
+	private static Logger logger = Logger.getLogger(Game.class);
 	
 	
 	public Game(ConfFactory pConfFactory, AI pAi, User pUser) {
