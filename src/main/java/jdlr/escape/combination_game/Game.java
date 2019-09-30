@@ -111,6 +111,7 @@ public class Game {
 				DefenderMode defensorMode = new DefenderMode(confFactory);
 				end = defensorMode.inGame(ai, user);
 				if (end == "END") {
+					ai.resetArray();
 					this.end(2);
 				}
 				break;
@@ -118,6 +119,7 @@ public class Game {
 				DuelMode duelMode = new DuelMode(confFactory);
 				end = duelMode.inGame(ai,  user);
 				if (end == "END") {
+					ai.resetArray();
 					this.end(3);
 				}
 				break;

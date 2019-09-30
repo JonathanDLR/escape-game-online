@@ -55,7 +55,6 @@ public class AI extends Player {
 		Random rand = new Random();
 		String[] partsUserResponse = userResponse.split("");
 		String[] partsAiResponse = this.getResponse().split("");
-		String[] partsSolution = solution.split("");
 		
 		
 		String response = "";
@@ -90,12 +89,11 @@ public class AI extends Player {
 				}
 				
 				// GENERATE RANDOM DIGIT WITH ARRAY INFO. CONCAT EACH DIGIT IN NUMBER RESPONSE
-				number = (minGiven + 1)  + rand.nextInt(maxGiven - minGiven);
-				System.out.println(number);
+				number = (minGiven + 1)  + rand.nextInt(maxGiven - (minGiven + 1));
+				
 				if (this.responsesGiven.get(i).contains(number)) {
 					System.out.println("Error detected in your response. This number is reinitialized.");
-					this.responsesGiven.get(i).remove(minGiven);
-					this.responsesGiven.get(i).remove(maxGiven);
+					this.responsesGiven.get(i).clear();
 					this.responsesGiven.get(i).add(-1);
 					this.responsesGiven.get(i).add(10);
 					number = rand.nextInt(10);
@@ -113,6 +111,17 @@ public class AI extends Player {
 		}
 		
 		return response;
+	}
+	
+	/**
+	 * resetting arrays
+	 */
+	public void resetArray() {
+		for (int i = 0; i < combinationNumber; i++) {
+			this.responsesGiven.get(i).clear();
+			this.responsesGiven.get(i).add(-1);
+			this.responsesGiven.get(i).add(10);
+		}
 	}
 	
 	/**
